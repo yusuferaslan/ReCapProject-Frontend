@@ -1,0 +1,23 @@
+.fit{
+    width: 800px;
+    height: 500px;
+    object-fit: cover!important;
+    ;
+}
+.cardsize {
+    width: 200px;
+    height: 500px; /* Yüksekliği ekleyin */
+    margin: auto; /* Kartı yatayda ortalar */    
+    display: flex; /* Dikeyde ortalamak için flex kullanın */
+    flex-direction: column; /* İçeriği dikeyde hizalamak için */
+    justify-content: center; /* Kartı dikeyde ortalar */
+    align-items: center; /* Kartı yatayda ve dikeyde ortalar */
+}
+
+.card-title.text-center {
+    text-align: center; /* Yatayda ortalamak için */
+    display: flex; /* Dikeyde ortalamak için flex kullanın */
+    flex-direction: column; /* İçeriği dikeyde hizalamak için */
+    justify-content: center; /* Hem yatayda hem de dikeyde ortalar */
+    height: 100%; /* İçeriğin dikeyde ortalanmasını sağlamak için gereklidir */
+}

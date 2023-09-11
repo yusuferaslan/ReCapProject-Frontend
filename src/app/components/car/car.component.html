@@ -1,28 +1,24 @@
-<div *ngIf="dataLoaded==false" class="spinner-border text-primary" role="status">
+<div
+  *ngIf="dataLoaded == false"
+  class="spinner-border text-primary"
+  role="status"
+>
   <span class="visually-hidden">Loading...</span>
 </div>
 
-<div class="text-bg-info p-2">Arabalar</div>
-<table class="table table-success table-striped">
-  <thead>
-    <tr>
-      <th>Id</th>
-      <th>Marka Id</th>
-      <th>Renk Id</th>
-      <th>Model Yılı</th>
-      <th>Kiralama Fiyatı</th>
-      <th>Model</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let car of cars">
-      <td>{{ car.id }}</td>
-      <td>{{ car.brandId }}</td>
-      <td>{{ car.colorId }}</td>
-      <td>{{ car.modelYear }}</td>
-      <td>{{ car.dailyPrice }}</td>
-      <td>{{ car.description }}</td>
-    </tr>
-  </tbody>
-</table>
+<div class="container">
+  <div class="p-3 mb-2 bg-success text-white">Araba Listesi</div>
+  <ul class="list-group">
+    <li *ngFor="let car of cars" class="list-group-item" [class]="getCurrentCar(car)" (click)="setCurrentCar(car)" routerLink="/cars/car/{{ car.id }}">
+      <h4>{{ car.description }}</h4>
+      <p>Model Yılı: {{ car.modelYear }}</p>
+      <p>Günlük Ücret: {{ car.dailyPrice }} TL</p>
+    </li>
+  </ul>
+</div>
+
+
+
+
+
 
