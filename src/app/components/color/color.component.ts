@@ -11,7 +11,9 @@ export class ColorComponent implements OnInit {
   colors: Color[] = [];
   dataLoaded = false;
   currentColor: Color | null = null;
-  constructor(private colorService: ColorService) {}
+  filterText: string = '';
+
+  constructor(private colorService: ColorService) { }
 
   ngOnInit(): void {
     this.getColors();

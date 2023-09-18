@@ -1,0 +1,23 @@
+<div class="container">
+    <h2>Kredi Kartı Ödeme</h2>
+    <form>
+      <div class="form-group">
+        <label for="cardNumber">Kredi Kartı Numarası</label>
+        <input type="text" class="form-control" id="cardNumber" [(ngModel)]="cardNumber" name="cardNumber" (keyup)="formatCreditCardNumber()" required>
+      </div>
+      <div class="form-group">
+        <label for="cardName">Kart Üzerindeki İsim</label>
+        <input type="text" class="form-control" id="cardName" [(ngModel)]="cardName" (keyup)="formatCardName()" name="cardName" required>
+      </div>      
+      <div class="form-group">
+        <label for="expirationDate">Son Kullanma Tarihi</label>
+        <input type="text" class="form-control" id="expirationDate" [(ngModel)]="expirationDate" name="expirationDate" (keyup)="formatExpirationDate()" required>
+      </div>
+      <div class="form-group">
+        <label for="cvv">CVV</label>
+        <input type="text" class="form-control" id="cvv" [(ngModel)]="cvv" name="cvv" (keyup)="formatCVV()" required>
+      </div>
+      <button type="button" (click)="getPayments()" class="btn btn-success">Ödeme Yap</button>
+    </form>    
+  </div>
+  

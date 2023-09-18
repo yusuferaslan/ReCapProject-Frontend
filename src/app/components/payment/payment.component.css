@@ -1,0 +1,14 @@
+.container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  .alert {
+    margin-top: 20px;
+  }
+  

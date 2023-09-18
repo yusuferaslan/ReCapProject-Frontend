@@ -1,20 +1,22 @@
-<div
-  *ngIf="dataLoaded == false"
-  class="spinner-border text-primary"
-  role="status"
->
+<div *ngIf="dataLoaded == false" class="spinner-border text-primary" role="status">
   <span class="visually-hidden">Loading...</span>
 </div>
 
 
-<ul class="list-group">  
+<ul class="list-group">
   <div class="p-3 mb-2 bg-success text-white">Renkler</div>
-  <li
-    *ngFor="let color of colors"
-    (click)="setCurrentColor(color)"
-    [class]="getCurrentColor(color)"
-    routerLink="/cars/color/{{ color.id }}"
-  >
+
+  <div class="mb-3">
+    <label for="filterTextt" class="form-label">Renk ara</label>
+    <input type="text" class="form-control" id="filterTextt" placeholder="Arama metni giriniz"
+      [(ngModel)]="filterText" />
+  </div>
+  <div *ngIf="filterText" class="alert alert-success">
+    {{ filterText }} Aradınız
+  </div>
+
+  <li *ngFor="let color of colors | colorFilterPipe:filterText" (click)="setCurrentColor(color)"
+    [class]="getCurrentColor(color)" routerLink="/cars/color/{{ color.id }}">
     {{ color.name }}
   </li>
 </ul>

@@ -1,8 +1,4 @@
-<div
-  *ngIf="dataLoaded == false"
-  class="spinner-border text-primary"
-  role="status"
->
+<div *ngIf="dataLoaded == false" class="spinner-border text-primary" role="status">
   <span class="visually-hidden">Loading...</span>
 </div>
 
@@ -35,58 +31,44 @@
             {{ carDetails[0].dailyPrice * 30 * 0.8 | currency : "₺" }}
           </li>
         </ul>
-        <button type="button" class="btn btn-success">
+        <div class="form-group">
+          <label for="rentDate">Kiralama Tarihi:</label>
+          <input type="date" class="form-control" [(ngModel)]="rentDate" name="rentDate" />
+        </div>
+        <div class="form-group">
+          <label for="returnDate">Dönüş Tarihi:</label>
+          <input type="date" class="form-control" [(ngModel)]="returnDate" name="returnDate" />
+        </div>
+        <br>
+        <button type="button" class="btn btn-success" routerLink="/cars/payment">
           Aracı Şimdi Kirala
         </button>
       </div>
     </div>
     <div class="col-md-9">
-      <div
-        *ngIf="carImageDetail.length > 0"
-        id="carouselExampleIndicators"
-        class="carousel slide"
-        data-bs-ride="true"
-      >
+      <div *ngIf="carImageDetail.length > 0" id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
         <ol class="carousel-indicators">
-          <li
-            data-bs-target="#carouselExampleIndicators"
-            *ngFor="let carImage of carImageDetail; let i = index"
-            [attr.data-bs-slide-to]="i"
-            [class.active]="i == 0"
-          ></li>
+          <li data-bs-target="#carouselExampleIndicators" *ngFor="let carImage of carImageDetail; let i = index"
+            [attr.data-bs-slide-to]="i" [class.active]="i == 0"></li>
         </ol>
         <div class="carousel-inner">
-          <div
-            class="carousel-item"
-            *ngFor="let carImage of carImageDetail; let i = index"
-            [class.active]="i == 0"
-          >
-            <img
-              [src]="getImagePath(carImage)"
-              class="d-block fit"
-              alt="car image"
-            />
+          <div class="carousel-item" *ngFor="let carImage of carImageDetail; let i = index" [class.active]="i == 0">
+            <img [src]="getImagePath(carImage)" class="d-block fit" alt="car image" />
           </div>
         </div>
-        <button
-          class="carousel-control-prev"
-          type="button"
-          data-bs-target="#carouselExampleIndicators"
-          data-bs-slide="prev"
-        >
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+          data-bs-slide="prev">
           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
           <span class="visually-hidden">Previous</span>
         </button>
-        <button
-          class="carousel-control-next"
-          type="button"
-          data-bs-target="#carouselExampleIndicators"
-          data-bs-slide="next"
-        >
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+          data-bs-slide="next">
           <span class="carousel-control-next-icon" aria-hidden="true"></span>
           <span class="visually-hidden">Next</span>
         </button>
       </div>
+      <br>
+      <div class="alert alert-success"> {{ rentalMessage }} </div>
     </div>
   </div>
 </div>

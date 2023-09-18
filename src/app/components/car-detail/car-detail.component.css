@@ -6,7 +6,7 @@
 }
 .cardsize {
     width: 200px;
-    height: 500px; /* Yüksekliği ekleyin */
+    height: 600px; /* Yüksekliği ekleyin */
     margin: auto; /* Kartı yatayda ortalar */    
     display: flex; /* Dikeyde ortalamak için flex kullanın */
     flex-direction: column; /* İçeriği dikeyde hizalamak için */

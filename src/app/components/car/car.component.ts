@@ -12,12 +12,12 @@ export class CarComponent implements OnInit {
   cars: Car[] = [];
   dataLoaded = false;
   currentCar: Car | null = null;
-  
+  filterText: string = '';
 
   constructor(
     private carService: CarService,
     private activatedRoute: ActivatedRoute
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe((params) => {
@@ -37,7 +37,6 @@ export class CarComponent implements OnInit {
     this.carService.getCars().subscribe((response) => {
       this.cars = response.data;
       this.dataLoaded = true;
-      
     });
   }
 

@@ -1,24 +1,28 @@
-<div
-  *ngIf="dataLoaded == false"
-  class="spinner-border text-primary"
-  role="status"
->
+<div *ngIf="dataLoaded == false" class="spinner-border text-primary" role="status">
   <span class="visually-hidden">Loading...</span>
 </div>
 
+
 <div class="container">
   <div class="p-3 mb-2 bg-success text-white">Araba Listesi</div>
+
+  <div class="mb-3">
+    <label for="filterTextt" class="form-label">Araç ara</label>
+    <input type="text" class="form-control" id="filterTextt" placeholder="Arama metni giriniz"
+      [(ngModel)]="filterText" />
+  </div>
+  <div *ngIf="filterText.length > 2" class="alert alert-success">
+    {{ filterText }} Aradınız
+  </div>
+
+  <app-car-filter></app-car-filter>
+  <br>
   <ul class="list-group">
-    <li *ngFor="let car of cars" class="list-group-item" [class]="getCurrentCar(car)" (click)="setCurrentCar(car)" routerLink="/cars/car/{{ car.id }}">
+    <li *ngFor="let car of cars | carFilterPipe : filterText" class="list-group-item" [class]="getCurrentCar(car)"
+      (click)="setCurrentCar(car)" routerLink="/cars/car/{{ car.id }}">
       <h4>{{ car.description }}</h4>
       <p>Model Yılı: {{ car.modelYear }}</p>
       <p>Günlük Ücret: {{ car.dailyPrice }} TL</p>
     </li>
   </ul>
 </div>
-
-
-
-
-
-

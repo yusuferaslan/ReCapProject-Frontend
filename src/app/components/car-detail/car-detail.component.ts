@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { CarDetail } from 'src/app/models/carDetail';
 import { CarImageDetail } from 'src/app/models/carImageDetail';
 import { CarImageService } from 'src/app/services/car-image.service';
 import { CarService } from 'src/app/services/car.service';
+import { RentalService } from 'src/app/services/rental.service';
 
 @Component({
   selector: 'app-car-detail',
@@ -16,11 +18,16 @@ export class CarDetailComponent implements OnInit {
   dataLoaded = false;
   imageUrl = 'https://localhost:44398/uploads/images/';
   carImageDetail: CarImageDetail[] = [];
+  rentalMessage: string = '';
+  rentDate: Date | null = null;
+  returnDate: Date | null = null;
 
   constructor(
     private carService: CarService,
     private activatedRoute: ActivatedRoute,
-    private carImageService: CarImageService
+    private carImageService: CarImageService,
+    private rentalService: RentalService,
+    private toastrService: ToastrService
   ) {}
 
   ngOnInit(): void {
@@ -28,6 +35,7 @@ export class CarDetailComponent implements OnInit {
       if (params['carId']) {
         this.getCarsDetailsId(params['carId']);
         this.getCarImagesByCarId(params['carId']);
+        this.getCheckRentalCarId(params['carId']);
       }
     });
   }
@@ -46,8 +54,15 @@ export class CarDetailComponent implements OnInit {
     });
   }
 
-  getImagePath(carImageDetail:CarImageDetail){
-    let imagePath = this.imageUrl+carImageDetail.imagePath
-    return imagePath
+  getImagePath(carImageDetail: CarImageDetail) {
+    let imagePath = this.imageUrl + carImageDetail.imagePath;
+    return imagePath;
+  }
+
+  getCheckRentalCarId(carId: number) {
+    this.rentalService.getCheckRentalCarId(carId).subscribe((response) => {
+      this.rentalMessage = response.message;
+      this.toastrService.info(response.message);
+    });
   }
 }

@@ -11,7 +11,9 @@ export class BrandComponent implements OnInit {
   brands: Brand[] = [];
   dataLoaded = false;
   currentBrand: Brand | null = null;
-  constructor(private brandService: BrandService) {}
+  filterText: string = '';
+
+  constructor(private brandService: BrandService) { }
 
   ngOnInit(): void {
     this.getBrands();
@@ -34,5 +36,5 @@ export class BrandComponent implements OnInit {
     } else return 'list-group-item';
   }
 
-  
+
 }
