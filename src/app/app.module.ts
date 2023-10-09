@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations"
 
 import { AppRoutingModule } from './app-routing.module';
@@ -20,6 +20,18 @@ import { CarFilterComponent } from './components/car-filter/car-filter.component
 import { PaymentComponent } from './components/payment/payment.component';
 
 import { ToastrModule } from 'ngx-toastr';
+import { BrandsDetailComponent } from './components/brands-detail/brands-detail.component';
+import { ColorsDetailComponent } from './components/colors-detail/colors-detail.component';
+import { CarsDetailComponent } from './components/cars-detail/cars-detail.component';
+import { BrandAddComponent } from './components/brand-add/brand-add.component';
+import { BrandUpdateComponent } from './components/brand-update/brand-update.component';
+import { BrandDeleteComponent } from './components/brand-delete/brand-delete.component';
+import { CarAddComponent } from './components/car-add/car-add.component';
+import { CarDeleteComponent } from './components/car-delete/car-delete.component';
+import { CarUpdateComponent } from './components/car-update/car-update.component';
+import { ColorAddComponent } from './components/color-add/color-add.component';
+import { ColorDeleteComponent } from './components/color-delete/color-delete.component';
+import { ColorUpdateComponent } from './components/color-update/color-update.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +48,18 @@ import { ToastrModule } from 'ngx-toastr';
     ColorFilterPipe,
     CarFilterComponent,
     PaymentComponent,
+    BrandsDetailComponent,
+    ColorsDetailComponent,
+    CarsDetailComponent,
+    BrandAddComponent,
+    BrandUpdateComponent,
+    BrandDeleteComponent,
+    CarAddComponent,
+    CarDeleteComponent,
+    CarUpdateComponent,
+    ColorAddComponent,
+    ColorDeleteComponent,
+    ColorUpdateComponent,
   ],
   imports: [
     BrowserModule,
@@ -43,6 +67,7 @@ import { ToastrModule } from 'ngx-toastr';
     HttpClientModule,
     FormsModule,
     BrowserAnimationsModule,
+    ReactiveFormsModule,
     ToastrModule.forRoot({ positionClass: "toast-bottom-right" })
   ],
   providers: [],

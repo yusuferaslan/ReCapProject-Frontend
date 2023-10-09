@@ -1,0 +1,41 @@
+<div class="content">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="title text-center">Marka Sil</h5>
+            </div>
+            <div class="card-body">
+                <form [formGroup]="brandDeleteForm">
+                    <div class="mb-3" style="display: none;">
+                        <label for="id"><b>Marka Id</b></label>
+                        <input type="number" id="id" formControlName="id" class="form-control" [(ngModel)]="brandId" />
+                    </div>
+                    <div class="mb-3" style="display: none;">
+                        <label for="name">Marka adı</label>
+                        <div class="form-group">
+                            <input type="text" id="name" formControlName="name" class="form-control" [(ngModel)]="brandName" />
+                        </div>
+                    </div>
+                </form>
+                <table class="table container">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Marka</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngIf="brand">
+                            <td>{{ brand.id }}</td>
+                            <td>{{ brand.name }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="card-footer">
+                <button class="btn btn-fill btn-info" (click)="backToBrandList()">Geri Dön</button>
+                <button class="btn btn-fill btn-danger" style="float: right" (click)="delete()">Sil</button>                
+            </div>
+        </div>
+    </div>
+</div>
